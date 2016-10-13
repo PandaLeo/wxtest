@@ -11,29 +11,39 @@ var appid = '';
 var timestamp = '';
 var signature = '';
 var out_url = '';
+var repeat_url = '';
+var user_id = '';
+var url = window.location.host+window.location.pathname;
+var h5_url = window.location.href;
 var id = GetQueryString('mz_id');
-$(function (){
-    $.ajax({
-        url:"../mz_view.php?mz_id="+id,
-        type:'get',
-        data:{},
-        cache:false,
-        async:false,
-        dataType:'json',
-        success : function(data){
-            // 返回数据
-            appid =data.appid;
-            timestamp =data.timestamp;
-            signature =data.signature;
-            out_url =data.out_url;
-        },
-        error : function() {
-            // view("异常！");
-            alert("异常！");
-        }
-    });
+var rmid = GetQueryString('rmid');
+var depth = GetQueryString('depth');
+var lineid = GetQueryString('lineid');
+var path = GetQueryString('path');
+$.ajax({
+    url:"../mz_view.php?mz_id="+id+'&rmid='+rmid,
+    type:'post',
+    data:{h5_url:h5_url},
+    cache:false,
+    async:false,
+    dataType:'json',
+    success : function(data){
+        // 返回数据
+        appid =data.appid;
+        timestamp =data.timestamp;
+        signature =data.signature;
+        repeat_url =data.repeat_url;
+        out_url = 'http://'+url+data.out_url;
+        user_id = data.user_id;
+    },
+    error : function() {
+        window.location.href='get_allow.php';
+    }
 });
-
+if(rmid==user_id){
+    rmid='';
+}
+$.get('../user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
 wx.config({
     debug: false,
     appId: appid,
@@ -50,11 +60,11 @@ wx.config({
 });
 wx.ready(function () {
     var shareData = {
-        title: '测试',
-        desc: '测试描述',
+        title: '自己填写',
+        desc: '自己填写',
         link: out_url,
-        imgUrl: '/123.jpg',
-        success: function (){}
+        imgUrl: 'http://zmt.rychgf.com/test/h5/img/222.png',
+        success: function (){$.get(repeat_url);}
     };
     wx.onMenuShareAppMessage(shareData);
     wx.onMenuShareTimeline(shareData);

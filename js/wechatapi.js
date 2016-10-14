@@ -65,7 +65,7 @@ if(user_id){
             title: '自己填写',
             desc: '自己填写',
             link: out_url,
-            imgUrl: 'http://zmt.rychgf.com/test/h5/img/222.png',
+            imgUrl: 'http://zmt.rychgf.com/test/h5/img/5.png',
             success: function (){$.get(repeat_url);}
         };
         wx.onMenuShareAppMessage(shareData);

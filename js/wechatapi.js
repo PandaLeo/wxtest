@@ -22,7 +22,10 @@ var lineid = GetQueryString('lineid');
 var path = GetQueryString('path');
 var back_url = window.location.href;
 $.ajax({
-    url:"../../mz_view.php?mz_id="+id+'&rmid='+rmid,
+    //服务器地址
+    // url:"../../mz_view.php?mz_id="+id+'&rmid='+rmid,
+    // 本地
+    url:"php/mz_view.php?mz_id="+id+'&rmid='+rmid,
     type:'post',
     data:{h5_url:h5_url},
     cache:false,
@@ -38,14 +41,20 @@ $.ajax({
         user_id = data.user_id;
     },
     error : function() {
-        window.location.href='../../get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
+        //服务器地址
+        //window.location.href='../../get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
+        // 本地
+        window.location.href='php/get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
     }
 });
 if(rmid==user_id){
     rmid='';
 }
 if(user_id){
-    $.get('../../user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+    //服务器地址
+    //$.get('../../user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+    // 本地
+    $.get('php/user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
     wx.config({
         debug: false,
         appId: appid,

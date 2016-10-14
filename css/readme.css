@@ -1,0 +1,27 @@
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.content {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50vw;
+    margin-top: -50vh;
+}
+header{ width: 100vw; height: 20vh; font-size: 8vw; text-align: center; font-weight: bold;}
+.sec_1{ width: 100vw; height: 20vh; font-size: 7vw; text-align: center;}
+.sec_2{ width: 100vw; height: 20vh; font-size: 6vw; text-align: center;}
+.sec_3{ width: 100vw; height: 20vh; font-size: 5vw; text-align: center;}
+footer{ width: 100vw; height: 20vh; font-size: 8vw; text-align: center;}
+footer a { text-decoration: none; font-weight: bold;}

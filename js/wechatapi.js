@@ -21,7 +21,7 @@ var depth = GetQueryString('depth');
 var lineid = GetQueryString('lineid');
 var path = GetQueryString('path');
 $.ajax({
-    url:"../mz_view.php?mz_id="+id+'&rmid='+rmid,
+    url:"php/mz_view.php?mz_id="+id+'&rmid='+rmid,
     type:'post',
     data:{h5_url:h5_url},
     cache:false,
@@ -37,13 +37,14 @@ $.ajax({
         user_id = data.user_id;
     },
     error : function() {
-        window.location.href='get_allow.php';
+        window.location.href='php/get_allow.php';
     }
 });
 if(rmid==user_id){
     rmid='';
 }
-$.get('../user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+$.get('php/user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+
 wx.config({
     debug: false,
     appId: appid,

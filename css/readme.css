@@ -24,4 +24,5 @@ header{ width: 100vw; height: 20vh; font-size: 8vw; text-align: center; font-wei
 .sec_2{ width: 100vw; height: 20vh; font-size: 6vw; text-align: center;}
 .sec_3{ width: 100vw; height: 20vh; font-size: 5vw; text-align: center;}
 footer{ width: 100vw; height: 20vh; font-size: 8vw; text-align: center;}
+header a { text-decoration: none; font-size: 6vw; font-weight: lighter;}
 footer a { text-decoration: none; font-weight: bold;}

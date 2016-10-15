@@ -37,5 +37,23 @@ music.onclick = function(){
         music_sta = 1;
     }
 };
+var Btn=document.getElementById('btn');
+Btn.onclick = function () {
+    alert(window.location.href);
+    alert(out_url);
+};
 //音乐控制结束
+// 解决低版本移动端audio的bug
+// $(document.body).on('click touchstart', function() {
+//     aud.src="music/He´s a Pirate.mp3";
+//     loadbgmusic();
+// });
+// var loadbgmusic = function() {
+//     if(aud.paused){
+//         aud.load();
+//         aud.play();
+//     }
+// };
+// 音乐兼容解决完毕
+
 

@@ -23,9 +23,9 @@ var path = GetQueryString('path');
 var back_url = window.location.href;
 $.ajax({
     //服务器地址
-    // url:"../../mz_view.php?mz_id="+id+'&rmid='+rmid,
+    url:"../../mz_view.php?mz_id="+id+'&rmid='+rmid,
     // 本地
-    url:"php/mz_view.php?mz_id="+id+'&rmid='+rmid,
+    // url:"php/mz_view.php?mz_id="+id+'&rmid='+rmid,
     type:'post',
     data:{h5_url:h5_url},
     cache:false,
@@ -42,19 +42,19 @@ $.ajax({
     },
     error : function() {
         //服务器地址
-        //window.location.href='../../get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
+        window.location.href='../../get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
         // 本地
-        window.location.href='php/get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
+    //  window.location.href='php/get_allow.php?response_type=code&scope=snsapi_userinfo&state=snsapi_userinfo&back_url='+back_url;
     }
 });
 if(rmid==user_id){
     rmid='';
 }
-if(user_id){
+if(user_id) {
     //服务器地址
-    //$.get('../../user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+    $.get('../../user_record.php?module=mz&id=' + id + '&action=view&rmid=' + rmid + '&depth=' + depth + '&lineid=' + lineid + '&path=' + path);
     // 本地
-    $.get('php/user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
+    // $.get('php/user_record.php?module=mz&id='+id+'&action=view&rmid='+rmid+'&depth='+depth+'&lineid='+lineid+'&path='+path);
     wx.config({
         debug: false,
         appId: appid,
@@ -75,7 +75,9 @@ if(user_id){
             desc: '自己填写',
             link: out_url,
             imgUrl: 'http://zmt.rychgf.com/test/h5/img/5.png',
-            success: function (){$.get(repeat_url);}
+            success: function () {
+                $.get(repeat_url);
+            }
         };
         wx.onMenuShareAppMessage(shareData);
         wx.onMenuShareTimeline(shareData);
@@ -89,6 +91,3 @@ if(navigator.userAgent.indexOf('MicroMessenger') >= 0){
         //WeixinJSBridge.call('hideToolbar');
     });
 }
-
-
-
